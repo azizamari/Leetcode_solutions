@@ -7,19 +7,13 @@
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         res=[]
-        res_f=[]
         def printLevel(root,level):
             if root==None:return
-            if level>0:
-                printLevel(root.left,level-1)
-                printLevel(root.right,level-1)
-            else:
-                res.append(root.val)
-        def height(root):
-            if root==None:return 0
-            return 1 + max(height(root.left),height(root.right))
-        for i in range(height(root)):
-            printLevel(root,i)
-            res_f.append(res)
-            res=[]
-        return res_f
+            if len(res)<level+1:
+                res.append([root.val])
+            else: 
+                res[level].append(root.val)
+            printLevel(root.left,level+1)
+            printLevel(root.right,level+1)
+        printLevel(root,0)
+        return res
