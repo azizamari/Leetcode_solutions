@@ -5,6 +5,6 @@ class Solution:
             for j in range(i):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
         
-        # swap rows
+        # inverse each row 
         for i in range(len(matrix)):
             matrix[i] = matrix[i][::-1]
